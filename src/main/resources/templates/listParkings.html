@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title  th:text="#{lang.addnewparking}" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<body>
+<header th:insert="fragments/fragments.html :: header"> </header>
+<div class="container">
+  <h2 th:text="#{lang.space}" />
+  <a th:href="@{/parkings/add}"   th:text="#{lang.addnewparking}"  />
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th  th:text="#{lang.id}" />
+      <th  th:text="#{lang.space}" />
+      <th  th:text="#{lang.model}" />
+      <th  th:text="#{lang.plate}" />
+      <th  th:text="#{lang.from}" />
+      <th  th:text="#{lang.to}" />
+      <th  th:text="#{lang.paid}" />
+
+      <th  th:text="#{lang.actions}" />
+
+
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="parking, iStat : ${parkingPage.content}"
+        th:style="${iStat.odd}? 'font-weight: bold;'"
+        th:alt-title="${iStat.even}? 'even' : 'odd'">
+      <td th:text="${parking.id}" />
+      <td th:text="${parking.space}"/>
+      <td th:text="${parking.model}" />
+      <td th:text="${parking.plate}" />
+      <td th:text="${parking.datefrom}" />
+      <td th:text="${parking.dateto}" />
+      <td th:text="${parking.paid}" />
+      <td>
+        <a th:href="@{/parkings/{id}/edit(id=${parking.id})}">Edit</a>
+        <a th:href="@{/parkings/{id}/delete(id=${parking.id})}">Delete</a>
+        <a  th:href="@{/parkings/{id}(id=${parking.id})}">Comments</a>
+      </td>
+
+
+
+
+
+
+    </tr>
+    </tbody>
+  </table>
+
+
+
+</div>
+
+
+
+
+
+
+<footer th:fragment="footer" class="py-3 my-4">
+  <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+    <li><a th:href="@{/parkings}" class="nav-link px-2 text-muted"th:text="#{lang.home}" ></a><li>
+    <li><a th:href="@{/parkings/list}" class="nav-link px-2 text-muted"th:text="#{lang.parking}"></a></li>
+    <li><a th:href="@{/users}" class="nav-link px-2 text-muted" th:text="#{lang.users}"></a></li>
+    <li><a th:href="@{/logout}" class="nav-link px-2 text-muted" th:text="#{lang.logout}"></a></li>
+  </ul>
+  <p class="text-center text-muted">© 2023 Parking, Inc</p>
+</footer>
+
+</body>
+</html>

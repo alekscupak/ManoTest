@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<header th:fragment="header" class="p-3 bg-dark text-white">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg>
+            </a>
+
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+<!--
+                <span th:text="#{lang.change}"></span>:
+                <button type="button" th:text="#{lang.eng}" onclick="window.location.href='http://localhost:8080/parkings?lang=en'"></button>
+                <button type="button" th:text="#{lang.fr}" onclick="window.location.href='http://localhost:8080/parkings?lang=fr'"></button>
+
+                <h1 th:text="#{greeting}"></h1>
+-->
+
+                <li><a th:href="@{/parkings}" class="nav-link px-2 text-secondary" th:text="#{lang.home}" ></a><li>
+                <li><a th:href="@{/parkings/list}" class="nav-link px-2 text-white"th:text="#{lang.parking}"></a></li>
+                <li><a th:href="@{/users}" class="nav-link px-2 text-white" th:text="#{lang.users}"></a></li>
+                <li><a th:href="@{/logout}" class="nav-link px-2 text-white" th:text="#{lang.logout}"></a></li>
+
+
+
+
+            </ul>
+
+            <form th:action="@{/parkings/filter}"  >
+                <a th:text="#{lang.filter}"> </a>
+                <input type="text" name="keyword" id="keyword" size="30" th:value="${keyword}" required />
+                <button type="submit" th:text="#{lang.search}"  />
+                <button type="button" th:text="#{lang.fr}" onclick="window.location.href='http://localhost:8080/parkings?lang=fr'"></button>
+                <button type="button" th:text="#{lang.eng}" onclick="window.location.href='http://localhost:8080/parkings?lang=en'"></button>
+
+            </form>
+
+
+        </div>
+    </div>
+</header>
+
+<footer th:fragment="footer" class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li><a th:href="@{/parkings}" class="nav-link px-2 text-muted"th:text="#{lang.home}" ></a><li>
+        <li><a th:href="@{/parkings/list}" class="nav-link px-2 text-muted"th:text="#{lang.parking}"></a></li>
+        <li><a th:href="@{/users}" class="nav-link px-2 text-muted" th:text="#{lang.users}"></a></li>
+        <li><a th:href="@{/logout}" class="nav-link px-2 text-muted" th:text="#{lang.logout}"></a></li>
+    </ul>
+    <p class="text-center text-muted">© 2023 Parking, Inc</p>
+</footer>
+
+</body>
+</html>

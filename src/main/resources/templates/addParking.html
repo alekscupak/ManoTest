@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new Parkings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</head>
+<body>
+<header th:insert="fragments/fragments.html :: header"> </header>
+
+<h1>Parking reservation</h1>
+<form th:action="@{/parkings}" th:object="${newParking}" method="post">
+    <p>
+        <label for="quantity">Parking Space:
+        <input type="number" id="quantity" name="quantity" min="1" max="20" step="1" value="20" th:field="*{space}">
+        </label>
+    </p>
+    <p>Car plate:
+        <label>
+            <input type="text" th:field="*{plate}" />
+        </label>
+    </p>
+    <p>
+    <p>Car model:
+        <label>
+            <input type="text" th:field="*{model}" />
+        </label>
+    </p>
+    <p>
+
+   <p>Date from:
+        <label>
+            <input type="datetime-local" th:field="*{datefrom}" />
+        </label>
+    </p>
+    <p>
+
+    <p>Date To:
+        <label>
+            <input type="datetime-local" th:field="*{dateto}" />
+        </label>
+    </p>
+    <p>
+    <p>Paid:
+        <label>
+    <input type="radio" id="paid" name="paid" value="YES" th:field="*{paid}"/> YES
+    <input type="radio" id="paid" name="paid" value="NO" th:field="*{paid}"/> NO
+        </label>
+    </p>
+
+
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+    </p>
+</form>
+
+<footer th:insert="fragments/fragments.html :: footer"> </footer>
+
+</body>
+</html>
